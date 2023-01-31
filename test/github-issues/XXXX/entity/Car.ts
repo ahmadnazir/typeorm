@@ -1,9 +1,10 @@
-import { Column, Entity, ManyToOne } from "../../../../src";
-import { BaseEntityAbstract } from "./BaseEntity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "../../../../src";
 import { Person } from "./Person";
 
 @Entity()
-export class Car extends BaseEntityAbstract {
+export class Car {
+    @PrimaryGeneratedColumn("uuid")
+    id: string;
 
     @Column()
     type: string;

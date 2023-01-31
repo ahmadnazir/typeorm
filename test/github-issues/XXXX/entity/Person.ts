@@ -1,11 +1,11 @@
-import { Column, Entity, OneToMany } from "../../../../src";
+import { Column, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "../../../../src";
 import { Address } from "./Address";
-import { BaseEntityAbstract } from "./BaseEntity";
 import { Car } from "./Car";
-// import { Company } from "./Company";
 
 @Entity()
-export class Person extends BaseEntityAbstract {
+export class Person {
+    @PrimaryGeneratedColumn("uuid")
+    id: string;
 
     @Column()
     name: string;
@@ -21,4 +21,7 @@ export class Person extends BaseEntityAbstract {
         x => x.person,
     )
     public addresses: Array<Address>;
+
+    @DeleteDateColumn({ type: "timestamp", name: "deleted_at" })
+    deletedAt: Date; // <- This causes the bug
 }

@@ -1,9 +1,10 @@
-import { Column, Entity, JoinColumn, ManyToOne } from "../../../../src";
-import { BaseEntityAbstract } from "./BaseEntity";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "../../../../src";
 import { Person } from "./Person";
 
 @Entity()
-export class Address extends BaseEntityAbstract {
+export class Address {
+    @PrimaryGeneratedColumn("uuid")
+    id: string;
 
     @Column()
     country: string;
